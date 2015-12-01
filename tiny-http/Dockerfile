@@ -1,2 +1,3 @@
 FROM busybox
-COPY http /bin/
+
+ADD ./http /bin/http
