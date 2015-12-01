@@ -1,2 +1,2 @@
 FROM busybox
-COPY http /app/
+COPY http /bin/
