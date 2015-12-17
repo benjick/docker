@@ -8,7 +8,3 @@ RUN apt-get update && \
     libasound2 libxtst6 libxss1 libnss3 xvfb
 
 ENV NODE_ENV=production
-
-WORKDIR /app
-
-RUN npm install nightmare
