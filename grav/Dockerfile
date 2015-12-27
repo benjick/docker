@@ -29,16 +29,10 @@ RUN curl -o grav.tar.gz -SL https://github.com/getgrav/grav/archive/${GRAV_VERSI
   && tar -xzf grav.tar.gz -C /tmp \
   && mv /tmp/grav-${GRAV_VERSION}/* /tmp/grav \
   && mv /tmp/grav-${GRAV_VERSION}/.htaccess /tmp/grav \
-  #&& rm -rf grav.tar.gz grav-${GRAV_VERSION} \
-  #&& /var/www/html/bin/grav install \
   && chown -R www-data:www-data /tmp/grav \
   && ls -al
 
-#RUN bin/gpm install antimatter
-
 COPY docker-entrypoint.sh /entrypoint.sh
 
-# grr, ENTRYPOINT resets CMD now
 ENTRYPOINT ["/entrypoint.sh"]
-
 CMD ["apache2-foreground"]
