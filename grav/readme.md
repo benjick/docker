@@ -39,9 +39,9 @@ COPY ./user /var/www/html/user
 
 and to run it
 
-```
+```bash
 docker build -t myapp .
-docker run -p 3030:80 -d myapp
+docker run -p 3030:80 --name mygrav -d myapp
 ```
 
 Where `user` is the user-folder for your Grav site

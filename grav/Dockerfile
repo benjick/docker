@@ -24,13 +24,12 @@ VOLUME /var/www/html
 
 ENV GRAV_VERSION 1.0.6
 RUN curl -o grav.tar.gz -SL https://github.com/getgrav/grav/archive/${GRAV_VERSION}.tar.gz \
-  && ls -la \
   && mkdir -p /tmp/grav \
   && tar -xzf grav.tar.gz -C /tmp \
   && mv /tmp/grav-${GRAV_VERSION}/* /tmp/grav \
   && mv /tmp/grav-${GRAV_VERSION}/.htaccess /tmp/grav \
-  && chown -R www-data:www-data /tmp/grav \
-  && ls -al
+  && rm -rf /tmp/grav-${GRAV_VERSION} grav.tar.gz \
+  && chown -R www-data:www-data /tmp/grav
 
 COPY docker-entrypoint.sh /entrypoint.sh
 
