@@ -20,7 +20,7 @@ RUN { \
 		echo 'opcache.enable_cli=1'; \
 	} > /usr/local/etc/php/conf.d/opcache-recommended.ini
 
-ENV GRAV_VERSION 1.1.16
+ENV GRAV_VERSION 1.1.17
 RUN curl -o grav.tar.gz -SL https://github.com/getgrav/grav/archive/${GRAV_VERSION}.tar.gz \
 	&& mkdir -p /tmp/grav \
 	&& tar -xzf grav.tar.gz -C /tmp \
