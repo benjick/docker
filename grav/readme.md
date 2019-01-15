@@ -12,8 +12,8 @@ docker run \
   -v $(pwd)/user:/var/www/html/user \
   -p 3030:80 \
   --name mygrav -d benjick/grav
-# Installs the default theme 'antimatter'
-docker exec mygrav bin/gpm install antimatter
+# Installs the default theme 'Quark'
+docker exec mygrav bin/gpm install quark
 ```
 
 Now you can go to localhost:3030 and see your page in action.
