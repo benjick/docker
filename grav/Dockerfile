@@ -1,11 +1,11 @@
-FROM php:7.1-apache
+FROM php:7.3-apache
 
 # Based on the official Wordpress docker file
 
 RUN a2enmod rewrite expires
 
 # install the PHP extensions we need
-RUN apt-get update && apt-get install -y git libpng-dev libjpeg-dev zlib1g-dev && rm -rf /var/lib/apt/lists/* \
+RUN apt-get update && apt-get install -y git rsync zip libzip-dev libpng-dev libjpeg-dev zlib1g-dev && rm -rf /var/lib/apt/lists/* \
 	&& docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
 	&& docker-php-ext-install gd mysqli opcache zip mbstring
 
@@ -20,7 +20,7 @@ RUN { \
 		echo 'opcache.enable_cli=1'; \
 	} > /usr/local/etc/php/conf.d/opcache-recommended.ini
 
-ENV GRAV_VERSION 1.6.8
+ENV GRAV_VERSION 1.6.16
 RUN curl -o grav.tar.gz -SL https://github.com/getgrav/grav/archive/${GRAV_VERSION}.tar.gz \
 	&& mkdir -p /tmp/grav \
 	&& tar -xzf grav.tar.gz -C /tmp \
